@@ -66,7 +66,8 @@ void tokenize_input(char *input, char **args)
  */
 void find_and_execute_command(char **args)
 {
-	char *path = getenv("PATH"), *token = strtok(path, ":");;
+	char *path = getenv("PATH");
+	char *token = strtok(path, ":");
 	char full_path[MAX_INPUT_SIZE];
 
 	if (path == NULL)
