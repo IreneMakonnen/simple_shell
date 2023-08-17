@@ -7,7 +7,7 @@
  */
 void execute_command(char **command, char **args)
 {
-	int status, n;
+	int pro, n;
 
 	if (!command || !argv[0])
 		return;
@@ -22,5 +22,5 @@ void execute_command(char **command, char **args)
 	if (n == -1)
 		perror(getenv("_"));
 
-	wait(&status);
+	wait(&pro);
 }
