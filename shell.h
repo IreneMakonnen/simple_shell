@@ -11,14 +11,24 @@
 #define MAX_COMMAND_LENGTH 150
 #define MAX_ARGS 64
 #define MAX_INPUT_SIZE 1024
+#define DATA_MANIPULATION 1024
 
 extern char **environ;
+data_entry data_table[DATA_MANIPULATION];
+
 int execute_command(char *comma); 
 void display_prompt(void); 
+void copy_command(int n);
+void execute_command(char **command, char **args);
+void linkedpath(char *path);
+char *findpathname(char *file);
 void print_environment(void);
-void execute_command(char *command, char **args);
-void tokenize_input(char *input, char **args);
 void find_and_execute_command(char **args);
 
+typedef struct
+{
+	char *dir;
+	char *path;
+} data_entry;
 
 #endif /*SHELL_H*/

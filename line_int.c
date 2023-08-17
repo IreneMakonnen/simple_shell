@@ -6,10 +6,8 @@
 int main(void)
 {
 	size_t len = 0;
-	char *buff = NULL;
+	char *buff = NULL, **av, *value, *pathname;
 	size_t measure = 0;
-	char **av = NULL;
-	char *value, *pathname;
 	void (*f)(char **);
 	path_directory *head = NULL;
 
@@ -27,7 +25,7 @@ int main(void)
 		{
 			value = getenv("PATH");
 			head = linkedpath(value);
-			pathname = which(av[0], head);
+			pathname = findpathname(av[0], head);
 			f = check_build(av);
 			if (f)
 			{
@@ -38,14 +36,15 @@ int main(void)
 			{
 				free(av[0]);
 				av[0] = pathname;
-				execute(av, av);
+				execute(av);
 			}
 			else if (!pathname)
-				execute_command(av, NULL);
+				execute_command(av);
 		}
 	}
 	free_struct(head);
 	free_argv(av);
 	free(buff);
+
 	return (0);
 }
