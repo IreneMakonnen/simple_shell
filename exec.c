@@ -1,56 +1,49 @@
-#include "shell.h"
+#include <shell.h>
 
 /**
-* display_prompt - Func dat displays prompt to user.
-*/
-void display_prompt(void)
-{
-printf("Simple_Shell$ ");
-fflush(stdout);
-}
-/**
-* execute_command - Func dat executes a command.
-*
-* @comma: Its a command to execute.
-* Return: 1 if execution failed
-* or 0 if successful.
-*/
-int execute_command(char *comma)
-{
-if (comma == NULL)
-{
-printf("\n");
-exit(0);
-}
-comma[strcspn(comma, "\n")] = '\0';
-int res = system(comma);
-if (res == -1)
-{
-printf("Execution of command failed.\n");
-return (1);
-}
-return (0);
-}
-/**
-* main - Entry point of the program.
-*
-* Handles end of file and exits the block.
-* Return: 0 (successful).
-*/
+ * main - display prompt
+ * handle the “end of file” condition (Ctrl+D)
+ * Return: 0
+ */
 int main(void)
 {
-char comma[MAX_COMMAND_LENGTH];
+char bar[MAX_COMMAND_LENGTH];
+
 while (1)
 {
-display_prompt();
-if (fgets(comma, sizeof(comma), stdin) == NULL)
+write(STDOUT_FILENO, "$", 2);
+
+if (fgets(bar, MAX_COMMAND_LENGTH, stdin) == NULL)
 {
-printf("\n");
+write(STDOUT_FILENO, "\n", 1);
 break;
 }
-if (execute_command(comma) != 0)
+bar[strcspn(bar, "\n")] = '\0';
+pid_t pid = fork();
+if (pid < 0)
 {
-printf("Command not found: %s\n", comma);
+perror("Fork failed");
+exit(1);
+}
+else if (pid == 0)
+{
+if (access(bar, X_OK) == 0)
+{
+execve(bar, NULL, NULL);
+perror("Execution failed");
+}
+else
+{
+write(STDOUT_FILENO, "Command not found: ", 25);
+write(STDOUT_FILENO, bar, strlen(bar));
+write(STDOUT_FILENO, "\n", 1);
+}
+_exit(1);
+}
+else
+{
+int pro;
+waitpid(pid, &pro, 0);
 }
 }
 return (0);
