@@ -6,24 +6,24 @@
  */
 void find_and_execute_command(char **args)
 {
-	char *path = getenv("PATH");
-	char *token = strtok(path, ":");
-	char full_path[MAX_INPUT_SIZE];
+	char *way = getenv("PATH");
+	char *coup = strtok(path, ":");
+	char len_path[MAX_INPUT_SIZE];
 
-	if (path == NULL)
+	if (way == NULL)
 	{
 		perror("Unable to access PATH");
 		return;
 	}
-	while (token != NULL)
+	while (coup != NULL)
 	{
-		snprintf(full_path, sizeof(full_path), "%s/%s", token, args[0]);
-		if (access(full_path, X_OK) == 0)
+		snprintf(len_path, sizeof(len_path), "%s/%s", coup, args[0]);
+		if (access(len_path, X_OK) == 0)
 		{
-			execute_command(full_path, args);
+			execute_command(len_path, args);
 			return;
 		}
-		token = strtok(NULL, ":");
+		coup = strtok(NULL, ":");
 	}
 	printf("Command not found: %s\n", args[0]);
 }

@@ -26,13 +26,13 @@ exit(0);
 comma[strcspn(comma, "\n")] = '\0';
 
 /**
-* Splitting command into command and arguments
+* Splitting comma into command and arguments
 */
-char *arguments[MAX_ARGUMENTS];
+char *arguments[MAX_COMMAND_LENGTH];
 int args_tot = 0;
 
 char *coup = strtok(comma, " ");
-while (coup != NULL && args_tot < MAX_ARGUMENTS)
+while (coup != NULL && args_tot < MAX_COMMAND_LENGTH)
 {
 arguments[args_tot] = coup;
 args_tot++;
@@ -76,7 +76,7 @@ break;
 
 if (execute_command(comma) != 0)
 {
-printf("Command not found: %s\n", comma);
+write(STDOUT_FILENO, "Command not found: %s\n", comma);
 }
 }
 
