@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <sys/types.h>
 
 
 #define MAX_COMMAND_LENGTH 150
@@ -13,7 +14,7 @@
 
 extern char **environ;
 int execute_command(char *comma); 
-void display_prompt(); 
+void display_prompt(void); 
 void print_environment(void);
 void execute_command(char *command, char **args);
 void tokenize_input(char *input, char **args);

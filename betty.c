@@ -1,16 +1,12 @@
 #include "shell.h"
 
-/**
-* main - Entry point
-*
-* Return: Always 0 (Success)
-*/
-int main(void)
+ssize_t write(int fd, const void *buf, size_t count);
+int main()
 {
-char *names = "Irene and Belinda";
+    const char *names = "Irene and Belinda\n";
+    size_t names_length = strlen(names);
 
-printf("%s\n", names);
+    write(STDOUT_FILENO, names, names_length);
 
-return (0);
+    return (0);
 }
-
