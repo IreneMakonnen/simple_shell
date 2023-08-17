@@ -9,7 +9,7 @@
 
 
 #define MAX_COMMAND_LENGTH 150
-#define MAX_ARGS 64
+#define MAX_ARGS 15
 #define MAX_INPUT_SIZE 1024
 #define DATA_MANIPULATION 1024
 
