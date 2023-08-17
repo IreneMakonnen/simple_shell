@@ -32,14 +32,20 @@ int main(void)
 				free(buff);
 				f(av);
 			}
-			else if (pathname)
+			else if (!pathname)
+			{
+				execute_command(av);
+				free_struc(head);
+				free_argv(av);
+				free(buff);
+				exit(EXIT_FAILURE);
+			}
+			else
 			{
 				free(av[0]);
 				av[0] = pathname;
 				execute(av);
 			}
-			else if (!pathname)
-				execute_command(av);
 		}
 	}
 	free_struct(head);

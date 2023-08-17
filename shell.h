@@ -22,6 +22,8 @@ void copy_command(int n);
 void execute_command(char **command, char **args);
 void linkedpath(char *path);
 char *findpathname(char *file);
+void exithandling(char **arv);
+int a_to_i(char *str);
 void print_environment(void);
 void find_and_execute_command(char **args);
 
