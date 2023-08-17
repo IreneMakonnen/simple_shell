@@ -9,7 +9,8 @@ void print_environment(void)
 
 	while (*env_ptr != NULL)
 	{
-		printf("%s\n", *env_ptr);
+		write(STDOUT_FILENO, *env_ptr, strlen(*env_ptr));
+		write(STDOUT_FILENO, "\n", 1);
 		env_ptr++;
 	}
 }

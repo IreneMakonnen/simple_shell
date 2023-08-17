@@ -27,7 +27,23 @@ int a_to_i(char *str);
 void print_environment(void);
 void find_and_execute_command(char **args);
 
-typedef struct
+/**
+ * struct path_directory - List with PATH directories
+ * @dir: Directory
+ * @next: Pointer to next node
+ */
+typedef struct path_directory
+{
+	char *dir;
+	struct path_directory *next;
+} path_directory;
+
+/**
+ * struct data_entry - Stores directory and path data
+ * @dir: Directory name
+ * @path: Pointer to next path
+ */
+typedef struct data_entry
 {
 	char *dir;
 	char *path;
