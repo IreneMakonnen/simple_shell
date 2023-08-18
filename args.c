@@ -26,13 +26,13 @@ exit(0);
 comma[strcspn(comma, "\n")] = '\0';
 
 /**
-* Splitting comma into command and arguments
+* Turning command to command and arguments
 */
 char *arguments[MAX_COMMAND_LENGTH];
 int args_tot = 0;
 
 char *coup = strtok(comma, " ");
-while (coup != NULL && args_tot < MAX_COMMAND_LENGTH)
+while (coup != NULL && args_tot < MAX_COMMAND_LENGTH - 1)
 {
 arguments[args_tot] = coup;
 args_tot++;
@@ -70,7 +70,7 @@ display_prompt();
 
 if (fgets(comma, sizeof(comma), stdin) == NULL)
 {
-printf("\n");
+write(STDOUT_FILENO, "\n");
 break;
 }
 

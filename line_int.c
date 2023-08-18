@@ -51,6 +51,5 @@ int main(void)
 	free_struct(head);
 	free_argv(av);
 	free(buff);
-
 	return (0);
 }
