@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
-* parse_string - func dat tokenize a string
+* parseString - func dat tokenize a string
 * @strin: It is a pointer
 * Return: 0
 */
@@ -13,6 +13,7 @@ void parseString(const char *strin)
 	strcpy(len, strin);
 
 	char *coup;
+
 	coup = strtok(len, del);
 
 	while (coup != NULL)
