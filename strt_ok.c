@@ -5,14 +5,15 @@
 * Return: 0
 */
 
-void parse_string(const char *strin)
+void parseString(const char *strin)
 {
 	const char *del = "/";
 	char len[260];
 
 	strcpy(len, strin);
 
-	char *coup = strtok(len, del);
+	char *coup;
+	coup = strtok(len, del);
 
 	while (coup != NULL)
 {
@@ -30,7 +31,7 @@ int main(void)
 {
 	const char *pat = "/usr/local/bin";
 
-parse_string(pat);
+parseString(pat);
 
 return (0);
 }
