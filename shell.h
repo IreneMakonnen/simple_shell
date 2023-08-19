@@ -30,6 +30,7 @@ char *our_getline(void);
 int main(int argc, char *argv[]);
 void change_directory(const char* route);
 void correct_pwd(const char* current_path);
+void parse_string(const char *strin);
 
 /**
  * struct path_directory - List with PATH directories
