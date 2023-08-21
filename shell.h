@@ -16,7 +16,6 @@
 extern char **environ;
 data_entry data_table[DATA_MANIPULATION];
 
-int execute_command(char *comma); 
 void display_prompt(void); 
 void copy_command(int n);
 void execute_command(char **command, char **args);
