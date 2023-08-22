@@ -26,7 +26,7 @@ int a_to_i(char *str);
 void print_environment(void);
 void find_and_execute_command(char **args);
 char *our_getline(void);
-int main(int argc, char *argv[]);
+int main(int argc_one, char *argv_one[]);
 void change_directory(const char* route);
 void correct_pwd(const char* current_path);
 void parseString(const char *star);

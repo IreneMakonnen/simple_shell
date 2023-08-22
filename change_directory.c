@@ -56,6 +56,7 @@ return (1);
 }
 
 const char *target_folder = argc_one > 1 ? argv_one[1] : root_dir;
+
 if (strcmp(target_folder, "-") == 0)
 {
 const char *previous_folder = getenv("OLDPWD");
