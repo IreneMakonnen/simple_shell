@@ -1,4 +1,4 @@
-#include <shell.h>
+#include "shell.h"
 
 /**
 * correct_pwd - It is an updated pwd
@@ -46,7 +46,7 @@ correct_pwd(route);
 *
 * Return: 0
 */
-int main(int argc, char *argv[])
+int main(int argc_one, char *argv_one[])
 {
 const char *root_dir = getenv("HOME");
 if (root_dir == NULL)
@@ -55,7 +55,7 @@ write(STDOUT_FILENO, "Error: HOME environment variable not set.\n", 43);
 return (1);
 }
 
-const char *target_folder = argc > 1 ? argv[1] : root_dir;
+const char *target_folder = argc_one > 1 ? argv_one[1] : root_dir;
 if (strcmp(target_folder, "-") == 0)
 {
 const char *previous_folder = getenv("OLDPWD");

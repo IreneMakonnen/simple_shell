@@ -29,7 +29,7 @@ char *our_getline(void);
 int main(int argc, char *argv[]);
 void change_directory(const char* route);
 void correct_pwd(const char* current_path);
-void parseString(const char *strin);
+void parseString(const char *star);
 
 /**
  * struct path_directory - List with PATH directories
