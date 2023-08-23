@@ -15,6 +15,27 @@
 #define MAX_INPUT_SIZE 1024
 #define DATA_MANIPULATION 1024
 
+<<<<<<< HEAD
+=======
+extern char **environ;
+data_entry data_table[DATA_MANIPULATION];
+
+void display_prompt(void); 
+void copy_command(int n);
+void execute_command(char **command, char **args);
+void linkedpath(char *path);
+char *findpathname(char *file);
+void exithandling(char **arv);
+int a_to_i(char *str);
+void print_environment(void);
+void find_and_execute_command(char **args);
+char *_getline(void);
+int main(int argc_one, char *argv_one[]);
+void change_directory(const char* route);
+void correct_pwd(const char* current_path);
+void parseString(const char *star);
+
+>>>>>>> d982f1c825cd80bd3cebe27b830399fa4d1987db
 /**
  * struct path_directory - List with PATH directories
  * @dir: Directory
