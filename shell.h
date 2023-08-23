@@ -25,7 +25,7 @@ void exithandling(char **arv);
 int a_to_i(char *str);
 void print_environment(void);
 void find_and_execute_command(char **args);
-char *our_getline(void);
+char *_getline(void);
 int main(int argc_one, char *argv_one[]);
 void change_directory(const char* route);
 void correct_pwd(const char* current_path);
