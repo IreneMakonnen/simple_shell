@@ -7,8 +7,11 @@ void print_names(const char *our_names, size_t num_names);
  */
 int main(void)
 
-	const char *our_names[] = {"Irene\nBelinda"};
-	size_t num_names = sizeof(our_names) / sizeof(our_names[0]);
+	const char *our_names[] = {
+		"Irene",
+		"Belinda"
+	};
+	size_t *num_names = sizeof(our_names) / sizeof(our_names[0]);
 
 	print_names(our_names[0], num_names);
 
