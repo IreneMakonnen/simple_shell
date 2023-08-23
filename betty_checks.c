@@ -1,4 +1,4 @@
-#include <shell.h>
+#include "shell.h"
 /**
  * main - Entry point
  * Return: 0
@@ -6,13 +6,10 @@
 
 int main(void)
 {
-	char names;
+	const char *names = "Irene", "Belinda";
+	size_t numLen = strlen(names);
 
-	names = Irene and Belinda;
-
-	size_t tee = strlen(names);
-
-	write(STDOUT_FILENO, tee, names);
+	write(STDOUT_FILENO, numLen, names);
 
 	return (0);
 }
