@@ -9,7 +9,6 @@
 #include <sys/wait.h>
 #include <signal.h>
 
-
 #define MAX_COMMAND_LENGTH 150
 #define MAX_ARGS 15
 #define MAX_INPUT_SIZE 1024
@@ -69,10 +68,10 @@ builtin_function check_build(char **args);
 void exitshell(char **args);
 void environment(char **args);
 void find_and_execute_command(char **args);
-char *_getline(void);
 int main(int argc, char *argv[]);
 void change_directory(const char* route);
 void correct_pwd(const char* current_path);
 void parseString(const char *star);
+void print_names(const char *our_names, size_t num_names);
 
 #endif
