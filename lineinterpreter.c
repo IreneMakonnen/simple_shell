@@ -5,27 +5,33 @@
  */
 int main(void)
 {
-	size_t len = 0;
+	ssize_t len = 0;
 	char *buff = NULL, **av, *value, *pathname;
 	size_t measure = 0;
-	void (*f)(char **);
+	builtin_function f;
 	path_directory *head = NULL;
 
 	signal(SIGINT, copy_command);
-	while (len != EOF)
+	while (len != -1)
 	{
 		if (isatty(STDIN_FILENO))
-			puts("#cisfun$ ");
+			write(STDOUT_FILENO, "#cisfun$ ", 9);
+		
 		len = getline(&buff, &measure, stdin);
-		EOF(len, buff);
+		if (len == -1)
+		{
+			free(buff);
+			break;
+		}
 		av = splitstring(buff, " \n");
 		if (!av || !av[0])
 			execute_command(av, NULL);
 		else
 		{
 			value = getenv("PATH");
-			head = linkedpath(value);
-			pathname = findpathname(av[0], head);
+			linkedpath(value);
+			head = convert_to_path(data_table[0]);
+			pathname = findpathname(av[0]);
 			f = check_build(av);
 			if (f)
 			{
@@ -34,8 +40,8 @@ int main(void)
 			}
 			else if (!pathname)
 			{
-				execute_command(av);
-				free_struc(head);
+				execute_command(av, NULL);
+				free_struct(head);
 				free_argv(av);
 				free(buff);
 				exit(EXIT_FAILURE);
@@ -44,7 +50,7 @@ int main(void)
 			{
 				free(av[0]);
 				av[0] = pathname;
-				execute(av);
+				execute_command(av, av);
 			}
 		}
 	}
@@ -52,4 +58,14 @@ int main(void)
 	free_argv(av);
 	free(buff);
 	return (0);
+}
+
+/**
+ * copy_command - Manages the copy (Ctrl+C) command
+ * @n: Integer
+ */
+void copy_command(int n)
+{
+	if (n == SIGINT)
+		write(STDOUT_FILENO, "\n#cisfun$ ", 10);
 }

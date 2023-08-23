@@ -20,6 +20,24 @@ void linkedpath(char *path)
 }
 
 /**
+ * convert_to_path - Converts data_entry to path_directory
+ * @data: data_entry instance
+ * Return: path_directory instance
+ */
+path_directory *convert_to_path(data_entry data)
+{
+	path_directory *node = malloc(sizeof(path_directory));
+	if (!node)
+	{
+		perror("Memory allocation error");
+		exit(EXIT_FAILURE);
+	}
+	node->dir = strdup(data.dir);
+	node->next = NULL;
+	return (node);
+}
+
+/**
  * findpathname - Finds the name of PATH
  * @file: File name
  * @head: Head of structure for path directories
@@ -44,7 +62,7 @@ char *findpathname(char *file)
 			return (totalpath);
 
 		free(totalpath);
-		data_ndex++;
+		data_index++;
 	}
 	return (NULL);
 }

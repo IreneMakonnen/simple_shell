@@ -12,11 +12,9 @@ void exithandling(char **arv)
 	{
 		status = a_to_i(arv[1]);
 		if (status <= -1)
-		status = 2;
+			status = 2;
 	}
-	freearv(arv);
-	free_list(head);
-	free(buff);
+	free_argv(arv);
 	exit(status);
 }
 
@@ -35,7 +33,7 @@ int a_to_i(char *str)
 
 	while (*str >= '0' && *str <= '9')
 	{
-		integer = integer * 10 + (*str - '0');
+		n = n * 10 + (*str - '0');
 		str++;
 	}
 	return (sign * n);
