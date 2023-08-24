@@ -8,6 +8,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <signal.h>
+#include <stddef.h>
 
 #define MAX_COMMAND_LENGTH 150
 #define MAX_ARGS 15
@@ -72,6 +73,6 @@ int main(int argc, char *argv[]);
 void change_directory(const char* route);
 void correct_pwd(const char* current_path);
 void parseString(const char *star);
-void print_names(const char *our_names, size_t num_names);
+void print_names(const char **our_names, size_t num_names);
 
 #endif

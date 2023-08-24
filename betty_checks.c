@@ -1,6 +1,6 @@
 #include "shell.h"
 
-void print_names(const char *our_names, size_t num_names);
+void print_names(const char **our_names, size_t num_names);
 /**
  * main - Entry point
  * @argc: number of command line passed to code

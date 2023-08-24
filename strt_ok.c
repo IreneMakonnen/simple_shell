@@ -31,9 +31,11 @@ void parseString(const char *star)
  * Return: 0 (successfully)
  */
 
-int main(void)
-{
+int main(int argc, char *argv[])
 	const char *star = "/usr/local/bin";
+{
+	(void)argc;
+	(void)argv;
 
 	parseString(star);
 
