@@ -6,19 +6,21 @@
 * @current_path: It is a new path
 * Return: 0 (successful)
 */
+void correct_pwd(const char *current_path);
+void change_directory(const char *route);
 
 void correct_pwd(const char *current_path)
 {
-char *folder = getcwd(NULL, 0);
-if (folder == NULL)
+	char *folder = getcwd(NULL, 0);
+	if (folder == NULL)
 {
-perror("getcwd");
-return;
+	perror("getcwd");
+	return;
 }
 
 if (setenv("PWD", folder, 1) != 0)
 {
-perror("setenv");
+	perror("setenv");
 }
 
 free(folder);
@@ -48,11 +50,11 @@ correct_pwd(route);
 */
 int main(int argc, char *argv[])
 {
-const char *root_dir = getenv("HOME");
-if (root_dir == NULL)
+	const char *root_dir = getenv("HOME");
+	if (root_dir == NULL)
 {
-write(STDOUT_FILENO, "Error: HOME environment variable not set.\n", 43);
-return (1);
+	write(STDOUT_FILENO, "Error: HOME environment variable not set.\n", 43);
+	return (1);
 }
 
 const char *target_folder = argc > 1 ? argv[1] : root_dir;
@@ -61,11 +63,10 @@ const char *previous_folder = getenv("OLDPWD")
 
 if (strcmp(target_folder, "-") == 0)
 {
-
-while (previous_folder == NULL)
+	while (previous_folder == NULL)
 {
-write(STDOUT_FILENO, "Error: OLDPWD environment variable not set.\n", 40);
-return (1);
+	write(STDOUT_FILENO, "Error: OLDPWD environment variable not set.\n", 40);
+	return (1);
 }
 target_folder = previous_folder;
 write(STDOUT_FILENO, target_folder, strlen(target_folder));
