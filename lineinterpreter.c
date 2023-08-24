@@ -3,6 +3,9 @@
  * main - Entry point of program
  * Return: Always 0 (Success)
  */
+
+data_entry data_table[DATA_MANIPULATION];
+
 int main(void)
 {
 	ssize_t len = 0;
