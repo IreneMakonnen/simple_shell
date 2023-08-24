@@ -53,6 +53,7 @@ typedef struct mybuild
 extern char **environ;
 extern data_entry data_table[DATA_MANIPULATION];
 
+void prompt(void);
 void display_prompt(void); 
 void copy_command(int n);
 void execute_command(char **command, char **args);
@@ -75,4 +76,5 @@ void correct_pwd(const char* current_path);
 void parseString(const char *star);
 void print_names(const char **our_names, size_t num_names);
 ssize_t _getline(char **in_put, size_t *num_malloc, int pro);
+
 #endif
