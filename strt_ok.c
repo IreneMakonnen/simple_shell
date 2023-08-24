@@ -1,5 +1,22 @@
 #include "shell.h"
 /**
+ * main - Entry point
+ * @argc: args on program
+ * @argv: pointer
+ * Return: 0(successfully)
+ */
+int main(int argc, char *argv[])
+
+{
+	(void)argc;
+	(void)argv;
+
+	parseString("/usr/local/bin");
+
+	return (0);
+}
+
+/**
 * parseString - func dat tokenize a string
 * @star: It is a pointer
 * Return: 0
@@ -24,20 +41,4 @@ void parseString(const char *star)
 		write(STDOUT_FILENO, "\n", 1);
 		tok = strtok_r(NULL, deli_miter, &par);
 	}
-}
-
-/**
- * main - Entry point
- * Return: 0 (successfully)
- */
-
-int main(int argc, char *argv[])
-	const char *star = "/usr/local/bin";
-{
-	(void)argc;
-	(void)argv;
-
-	parseString(star);
-
-	return (0);
 }
