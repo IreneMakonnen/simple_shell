@@ -1,6 +1,6 @@
 #include "shell.h"
 
-void print_names(const char **our_names, size_t num_names);
+void print_names(const char **our_names, size_t *num_names);
 /**
  * main - Entry point
  * @argc: number of command line passed to code
@@ -9,6 +9,7 @@ void print_names(const char **our_names, size_t num_names);
  */
 int main(int argc, char *argv[])
 {
+	num_name = size of(our_names) / sizeof(our_names[0]);
 	(void)argc;
 	(void)argv;
 
@@ -18,8 +19,6 @@ int main(int argc, char *argv[])
 		"Irene",
 		"Belinda"
 	};
-
-	num_names = sizeof(our_names) / sizeof(our_names[0]);
 
 	print_names(our_names, num_names);
 
@@ -31,12 +30,13 @@ int main(int argc, char *argv[])
  * @num_names: size
  */
 
-void print_names(const char **our_names, size_t num_names)
+void print_names(const char **our_names, size_t *num_names)
+
+	const char *our_names = our_names[a];
+size_t len_gth = strlen(our_names);
 
 	for (size_t a = 0; a < num_names; a++)
 	{
-		const char *our_names = our_names[a];
-		size_t len_gth = strlen(our_names);
 
 		write(STDOUT_FILENO, our_names, len_gth);
 		write(STDOUT_FILENO, "\n", 1);
